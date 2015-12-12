@@ -1,0 +1,31 @@
+{
+  "name": "apiNG-plugin-openweathermap",
+  "homepage": "https://github.com/JohnnyTheTank/apiNG-plugin-openweathermap",
+  "authors": [
+    "Jonathan Hornung <jonathan.hornung@gmail.com>"
+  ],
+  "version": "0.1.0",
+  "description": "openweathermap plugin for apiNG",
+  "main": "dist/apiNG-plugin-openweathermap.min.js",
+  "moduleType": [],
+  "keywords": [
+    "aping",
+    "openweathermap",
+    "angularjs",
+    "rest",
+    "api",
+    "json"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "apiNG": "*",
+    "angular-openweathermap-api-factory": "*"
+  }
+}

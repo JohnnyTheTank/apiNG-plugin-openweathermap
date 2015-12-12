@@ -1,0 +1,33 @@
+{
+  "name": "aping-plugin-openweathermap",
+  "version": "0.1.0",
+  "description": "openweathermap plugin for apiNG",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JohnnyTheTank/apiNG-plugin-openweathermap.git"
+  },
+  "keywords": [
+    "aping",
+    "openweathermap",
+    "angularjs",
+    "rest",
+    "api",
+    "json",
+    "angular"
+  ],
+  "author": "Jonathan Hornung",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JohnnyTheTank/apiNG-plugin-openweathermap/issues"
+  },
+  "homepage": "https://github.com/JohnnyTheTank/apiNG-plugin-openweathermap#readme",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-uglify": "^0.11.0",
+    "grunt-contrib-watch": "^0.6.1"
+  }
+}

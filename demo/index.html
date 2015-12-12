@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OpenWeatherMap Demo</title>
+
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="../bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="../bower_components/apiNG/dist/aping.min.js"></script>
+    <script src="aping-config.js"></script>
+    <script src="app.js"></script>
+    <script src="../bower_components/angular-openweathermap-api-factory/src/angular-openweathermap-api-factory.js"></script>
+    <script src="../src/aping-openweathermap-directive.js"></script>
+    <script src="../src/aping-openweathermap-helper.js"></script>
+</head>
+<body ng-app="app">
+    <aping
+            model="weather"
+            aping-openweathermap="[{'cityName':'köln', 'countryCode':'de', 'lang':'de'}]">
+    </aping>
+
+    <hr>
+
+    <!-- NYC -->
+    <aping
+            model="weather"
+            aping-openweathermap="[{'cityId':'5128581', 'lang':'de'}]">
+    </aping>
+
+    <hr>
+
+    <!-- Berlin -->
+    <aping
+            model="weather"
+            aping-openweathermap="[{'lat':'52.52', 'lng':'13.41', 'lang':'de'}]">
+    </aping>
+
+    <hr>
+
+    <!-- Perlach in Munich -->
+    <aping
+            model="weather"
+            aping-openweathermap="[{'zip':'81539', 'countryCode':'de', 'lang':'de'}]">
+    </aping>
+</body>
+</html>
