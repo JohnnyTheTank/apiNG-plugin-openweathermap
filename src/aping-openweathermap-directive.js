@@ -21,7 +21,7 @@ var jjtApingOpenWeatherMap = angular.module("jtt_aping_openweathermap", ['jtt_op
 
                     var openweathermapSearchObject = {
                         appid: apingUtilityHelper.getApiCredentials(apingOpenWeatherMapHelper.getThisPlattformString(), "appid"),
-                        lang: request.lang || false,
+                        lang: request.language || false,
                         units: request.units || "metric",
                     };
 
@@ -66,12 +66,6 @@ var jjtApingOpenWeatherMap = angular.module("jtt_aping_openweathermap", ['jtt_op
                             //on error
                         });
                     }
-
-
-
-                    //get _data for each request
-                        // on success:
-                            // apingController.concatToResults(apingOpenWeatherMapHelper.getObjectByJsonData(_data, appSettings.model));
                 });
             }
         }
