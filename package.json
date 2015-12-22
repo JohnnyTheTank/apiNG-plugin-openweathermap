@@ -1,6 +1,6 @@
 {
   "name": "aping-plugin-openweathermap",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "openweathermap plugin for apiNG",
   "main": "Gruntfile.js",
   "scripts": {
