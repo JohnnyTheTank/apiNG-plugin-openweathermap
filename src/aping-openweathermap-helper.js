@@ -21,10 +21,8 @@ jjtApingOpenWeatherMap.service('apingOpenWeatherMapHelper', ['apingModels', 'api
             var _this = this;
 
             if (_data.constructor === Array) {
-                //replace '_data.items'
                 if (_data.items) {
 
-                    //replace '_data.items'
                     angular.forEach(_data.items, function (value, key) {
                         var tempResult;
                         if(_helperObject.getNativeData === true || _helperObject.getNativeData === "true") {

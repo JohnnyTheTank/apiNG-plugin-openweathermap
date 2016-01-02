@@ -31,10 +31,14 @@ var jjtApingOpenWeatherMap = angular.module("jtt_aping_openweathermap", ['jtt_op
 
                     //create requestObject for api request call
                     var requestObject = {
-                        appid: apingUtilityHelper.getApiCredentials(apingOpenWeatherMapHelper.getThisPlattformString(), "appid"),
+                        appid: apingUtilityHelper.getApiCredentials(apingOpenWeatherMapHelper.getThisPlattformString(), "api_key"),
                         lang: request.language || false,
                         units: request.units || "metric",
                     };
+
+                    if(request.units == 'kelvin') {
+                        requestObject.units = undefined;
+                    }
 
                     if(request.cityName) {
                         requestObject.q = request.cityName;

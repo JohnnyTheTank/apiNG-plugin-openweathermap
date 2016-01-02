@@ -2,11 +2,11 @@
 apingApp.config(['$provide', function ($provide) {
 
     $provide.constant("apingApiKeys", {
-        'openweathermap': [{'appid':'<YOUR_OWM_APP_ID>'}],
+        openweathermap: [{'api_key':'<YOUR_OPENWEATHERMAP_API_KEY>'}],
     });
 
     $provide.constant("apingDefaultSettings", {
-        templateUrl : "aping_design_openweathermap.html",
+        templateUrl : "aping_design_blanko.html",
         items : 20, //items per request
         maxItems: 100, //max items per aping
         orderBy : "timestamp",
