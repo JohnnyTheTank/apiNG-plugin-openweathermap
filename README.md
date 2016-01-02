@@ -141,8 +141,8 @@ Sample requests:
 ### c) Rate limit
 Visit the official [OpenWeatherMap Price List](http://openweathermap.org/price)
 
-> | Calls per  | Free |
-> |----------|---------|
+| Calls per  | Free |
+|----------|---------|
 | **minute** (no more than) | 60 |
 | **day** (no more than) | 50,000 |
 
