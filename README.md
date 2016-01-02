@@ -143,7 +143,7 @@ Visit the official [OpenWeatherMap Price List](http://openweathermap.org/price)
 
 > | Calls per  | Free |
 > |----------|---------|
- | **minute** (no more than) | 60 |
+| **minute** (no more than) | 60 |
 | **day** (no more than) | 50,000 |
 
 
