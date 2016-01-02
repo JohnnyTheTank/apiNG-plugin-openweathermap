@@ -25,7 +25,7 @@ You can choose your preferred method of installation:
 * Download from github: [apiNG-plugin-openweathermap.zip](https://github.com/JohnnyTheTank/apiNG-plugin-openweathermap/zipball/master)
 
 ### b) Include files
-Include `apiNG-plugin-openweathermap.min.js` in your apiNG application
+Include `aping-plugin-openweathermap.min.js` in your apiNG application
 ```html
 <script src="bower_components/apiNG-plugin-openweathermap/dist/aping-plugin-openweathermap.min.js"></script>
 ```
