@@ -2,7 +2,9 @@
 apingApp.config(['$provide', function ($provide) {
 
     $provide.constant("apingApiKeys", {
-        openweathermap: [{'api_key':'<YOUR_OPENWEATHERMAP_API_KEY>'}],
+        openweathermap: [
+            {'api_key':'<YOUR_OPENWEATHERMAP_API_KEY>'},
+        ],
     });
 
     $provide.constant("apingDefaultSettings", {

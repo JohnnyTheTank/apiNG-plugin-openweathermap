@@ -1,11 +1,5 @@
 "use strict";
 
-/**
- @author Jonathan Hornung (https://github.com/JohnnyTheTank)
- @url https://github.com/JohnnyTheTank/apiNG-plugin-openweathermap
- @licence MIT
- */
-
 jjtApingOpenWeatherMap.service('apingOpenWeatherMapHelper', ['apingModels', 'apingTimeHelper', 'apingUtilityHelper', function (apingModels, apingTimeHelper, apingUtilityHelper) {
     this.getThisPlattformString = function () {
         return "openweathermap";
@@ -17,13 +11,16 @@ jjtApingOpenWeatherMap.service('apingOpenWeatherMapHelper', ['apingModels', 'api
 
     this.getObjectByJsonData = function (_data, _helperObject) {
         var requestResults = [];
-        if (_data) {
+
+        console.log(_data);
+
+        if (_data && _data.data) {
             var _this = this;
 
-            if (_data.constructor === Array) {
-                if (_data.items) {
+            if (_data.data.constructor === Array) {
+                if (_data.data.items) {
 
-                    angular.forEach(_data.items, function (value, key) {
+                    angular.forEach(_data.data.items, function (value, key) {
                         var tempResult;
                         if(_helperObject.getNativeData === true || _helperObject.getNativeData === "true") {
                             tempResult = value;
@@ -39,9 +36,9 @@ jjtApingOpenWeatherMap.service('apingOpenWeatherMapHelper', ['apingModels', 'api
 
                 var tempResult;
                 if(_helperObject.getNativeData === true || _helperObject.getNativeData === "true") {
-                    tempResult = _data;
+                    tempResult = _data.data;
                 } else {
-                    tempResult = _this.getItemByJsonData(_data, _helperObject.model);
+                    tempResult = _this.getItemByJsonData(_data.data, _helperObject.model);
                 }
                 if(tempResult) {
                     requestResults.push(tempResult);
