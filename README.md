@@ -6,7 +6,7 @@
 # Information
 * **Supported apiNG models: `weather`**
 * This plugin supports the [`get-native-data` parameter](https://aping.readme.io/docs/configuration#parameters)
-* This plugin needs an [access token](#2-access-token) :warning:
+* This plugin needs an [api key](#2-api-key) :warning:
 * Used promise library: [angular-openweathermap-api-factory](https://github.com/JohnnyTheTank/angular-openweathermap-api-factory) _(included in distribution files)_
 
 # Documentation
@@ -16,9 +16,9 @@
     2. Include file
     3. Add dependencies
     4. Add plugin
-2. [ACCESS TOKEN](#2-access-token)
-    1. Generate your `access_token`
-    2. Insert your `access_token` into `aping-config.js`
+2. [API KEY](#2-api-key)
+    1. Generate your `api_key`
+    2. Insert your `api_key` into `aping-config.js`
 3. [USAGE](#3-usage)
     1. Models
     2. Requests
@@ -63,7 +63,7 @@ Add the plugin's directive `aping-openweathermap="[]"` to your apiNG directive a
 </aping>
 ```
 
-## 2. ACCESS TOKEN
+## 2. API KEY
 
 ### I. Get your `api_key`
 

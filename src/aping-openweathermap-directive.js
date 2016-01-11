@@ -10,7 +10,7 @@ var jjtApingOpenWeatherMap = angular.module("jtt_aping_openweathermap", ['jtt_op
 
                 var appSettings = apingController.getAppSettings();
 
-                var requests = apingUtilityHelper.parseJsonFromAttributes(attrs.apingOpenweathermap, apingOpenWeatherMapHelper.getThisPlattformString(), appSettings);
+                var requests = apingUtilityHelper.parseJsonFromAttributes(attrs.apingOpenweathermap, apingOpenWeatherMapHelper.getThisPlatformString(), appSettings);
                 requests.forEach(function (request) {
 
                     //create helperObject for helper function call
@@ -25,7 +25,7 @@ var jjtApingOpenWeatherMap = angular.module("jtt_aping_openweathermap", ['jtt_op
 
                     //create requestObject for api request call
                     var requestObject = {
-                        appid: apingUtilityHelper.getApiCredentials(apingOpenWeatherMapHelper.getThisPlattformString(), "api_key"),
+                        appid: apingUtilityHelper.getApiCredentials(apingOpenWeatherMapHelper.getThisPlatformString(), "api_key"),
                         lang: request.language || false,
                         units: request.units || "metric",
                     };

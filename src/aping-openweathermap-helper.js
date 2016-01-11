@@ -1,7 +1,7 @@
 "use strict";
 
 jjtApingOpenWeatherMap.service('apingOpenWeatherMapHelper', ['apingModels', 'apingTimeHelper', 'apingUtilityHelper', function (apingModels, apingTimeHelper, apingUtilityHelper) {
-    this.getThisPlattformString = function () {
+    this.getThisPlatformString = function () {
         return "openweathermap";
     };
 
@@ -100,7 +100,7 @@ jjtApingOpenWeatherMap.service('apingOpenWeatherMapHelper', ['apingModels', 'api
     };
 
     this.getWeatherItemByJsonData = function (_item) {
-        var weatherObject = apingModels.getNew("weather", this.getThisPlattformString());
+        var weatherObject = apingModels.getNew("weather", this.getThisPlatformString());
 
         //fill _item in socialObject
         $.extend(true, weatherObject, {
