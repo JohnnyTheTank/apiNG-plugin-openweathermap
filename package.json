@@ -1,7 +1,7 @@
 {
   "name": "aping-plugin-openweathermap",
-  "version": "0.7.0",
-  "description": "openweathermap plugin for apiNG",
+  "version": "0.7.6",
+  "description": "OpenWeatherMap plugin for apiNG",
   "main": "dist/aping-plugin-openweathermap.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -19,12 +19,12 @@
     "json",
     "angular"
   ],
-  "author": "Jonathan Hornung",
+  "author": "Jonathan Hornung <jonathan.hornung@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/JohnnyTheTank/apiNG-plugin-openweathermap/issues"
   },
-  "homepage": "https://github.com/JohnnyTheTank/apiNG-plugin-openweathermap#readme",
+  "homepage": "https://github.com/JohnnyTheTank/apiNG-plugin-openweathermap",
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-contrib-concat": "^0.5.1",

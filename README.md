@@ -72,6 +72,21 @@ Add the plugin's directive `aping-openweathermap="[]"` to your apiNG directive a
     * There is your `api_key`
 
 ### II. Insert your `api_key` into `aping-config.js`
+Create and open `js/apiNG/aping-config.js` in your application folder. It should be look like this snippet:
+```js
+apingApp.config(['$provide', function ($provide) {
+    $provide.value("apingDefaultSettings", {
+        apingApiKeys : {
+            //...
+            'openweathermap': [
+                {'api_key':'<YOUR_OPENWEATHERMAP_API_KEY>'}
+            ],
+            //...
+        }
+    });
+}]);
+```
+
 Open `js/apiNG/aping-config.js` in your application folder. It should be look like this snippet:
 ```js
 apingApp.config(['$provide', function ($provide) {

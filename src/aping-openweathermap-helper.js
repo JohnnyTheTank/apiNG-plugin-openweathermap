@@ -5,14 +5,12 @@ jjtApingOpenWeatherMap.service('apingOpenWeatherMapHelper', ['apingModels', 'api
         return "openweathermap";
     };
 
-    this.getThisPlattformLink = function () {
+    this.getThisPlatformLink = function () {
         return "https://openweathermap.org/";
     };
 
     this.getObjectByJsonData = function (_data, _helperObject) {
         var requestResults = [];
-
-        console.log(_data);
 
         if (_data && _data.data) {
             var _this = this;

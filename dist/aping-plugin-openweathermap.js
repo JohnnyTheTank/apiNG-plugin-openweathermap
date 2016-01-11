@@ -1,8 +1,8 @@
 /**
     @name: aping-plugin-openweathermap 
-    @version: 0.7.0 (09-01-2016) 
-    @author: Jonathan Hornung 
-    @url: https://github.com/JohnnyTheTank/apiNG-plugin-openweathermap#readme 
+    @version: 0.7.6 (11-01-2016) 
+    @author: Jonathan Hornung <jonathan.hornung@gmail.com> 
+    @url: https://github.com/JohnnyTheTank/apiNG-plugin-openweathermap 
     @license: MIT
 */
 "use strict";
@@ -87,14 +87,12 @@ jjtApingOpenWeatherMap.service('apingOpenWeatherMapHelper', ['apingModels', 'api
         return "openweathermap";
     };
 
-    this.getThisPlattformLink = function () {
+    this.getThisPlatformLink = function () {
         return "https://openweathermap.org/";
     };
 
     this.getObjectByJsonData = function (_data, _helperObject) {
         var requestResults = [];
-
-        console.log(_data);
 
         if (_data && _data.data) {
             var _this = this;
