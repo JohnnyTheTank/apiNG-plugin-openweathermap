@@ -5,29 +5,35 @@
 
 # Information
 * **Supported apiNG models: `weather`**
+* This plugin supports the [`get-native-data` parameter](https://aping.readme.io/docs/configuration#parameters)
+* This plugin needs an [access token](#2-access-token) :warning:
 * Used promise library: [angular-openweathermap-api-factory](https://github.com/JohnnyTheTank/angular-openweathermap-api-factory) _(included in distribution files)_
 
 # Documentation
-    I.   INSTALLATION
-    II.  API KEY
-    III. USAGE
 
-## I. INSTALLATION
-    a) Get file
-    b) Include file
-    c) Add dependencies
-    d) Add the plugin
+1. [INSTALLATION](#1-installation)
+    1. Get file
+    2. Include file
+    3. Add dependencies
+    4. Add plugin
+2. [ACCESS TOKEN](#2-access-token)
+    1. Generate your `access_token`
+    2. Insert your `access_token` into `aping-config.js`
+3. [USAGE](#3-usage)
+    1. Models
+    2. Requests
+    3. Rate limit
 
-### a) Get file
-You can choose your preferred method of installation:
+## 1. INSTALLATION
 
+### I. Get file
 Install via either [bower](http://bower.io/), [npm](https://www.npmjs.com/) or downloaded files:
 
 * `bower install apiNG-plugin-openweathermap --save`
 * `npm install aping-plugin-openweathermap --save`
 * download [apiNG-plugin-openweathermap.zip](https://github.com/JohnnyTheTank/apiNG-plugin-openweathermap/zipball/master)
 
-### b) Include file
+### II. Include file
 Include `aping-plugin-openweathermap.min.js` in your apiNG application
 
 ```html
@@ -41,14 +47,14 @@ Include `aping-plugin-openweathermap.min.js` in your apiNG application
 <script src="aping-plugin-openweathermap.min.js"></script>
 ```
 
-### c) Add dependencies
+### III. Add dependencies
 Add the module `jtt_aping_openweathermap` as a dependency to your app module:
 ```js
 var app = angular.module('app', ['jtt_aping', 'jtt_aping_openweathermap']);
 ```
 
-### d) Add the plugin
-Add the plugin's directive `aping-openweathermap="[]"` to your apiNG directive and configure your requests (_**III. USAGE**_)
+### IV. Add the plugin
+Add the plugin's directive `aping-openweathermap="[]"` to your apiNG directive and [configure your requests](#ii-requests)
 ```html
 <aping
     template-url="templates/weather.html"
@@ -57,17 +63,15 @@ Add the plugin's directive `aping-openweathermap="[]"` to your apiNG directive a
 </aping>
 ```
 
-## II. API KEY
-    a) Get your `api_key`
-    b) Insert your `api_key` into `aping-config.js`
+## 2. ACCESS TOKEN
 
-### a) Get your `api_key`
+### I. Get your `api_key`
 
 1. Login on [openweathermap.org](http://openweathermap.org/)
 2. Open [home.openweathermap.org](http://home.openweathermap.org/)
     * There is your `api_key`
 
-### b) Insert your `api_key` into `aping-config.js`
+### II. Insert your `api_key` into `aping-config.js`
 Open `js/apiNG/aping-config.js` in your application folder. It should be look like this snippet:
 ```js
 apingApp.config(['$provide', function ($provide) {
@@ -87,12 +91,9 @@ apingApp.config(['$provide', function ($provide) {
 
 :warning: Replace `<YOUR_OPENWEATHERMAP_API_KEY>` with your `api_key`
 
-## III. USAGE
-    a) Models
-    b) Requests
-    c) Rate limit
+## 3. USAGE
 
-### a) Models
+### I. Models
 Supported apiNG models
 
 |  model   | content |
@@ -100,7 +101,7 @@ Supported apiNG models
 | `weather` | **weather data** |
 
 
-### b) Requests
+### II. Requests
 Every **apiNG plugin** expects an array of **requests** as html attribute.
 
 
@@ -149,7 +150,7 @@ Sample requests:
 Sample requests:
 * `[{'lat':'-13.163333', 'lng':'-72.545556', 'language':'es'}]`
 
-### c) Rate limit
+### III. Rate limit
 Visit the official [OpenWeatherMap Price List](http://openweathermap.org/price)
 
 > | Calls per  | Free |
