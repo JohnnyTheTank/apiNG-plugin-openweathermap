@@ -1,11 +1,14 @@
 [logo]: http://aping.io/logo/320/aping-plugin.png "apiNG Plugin"
 ![apiNG][logo]
 
+[![npm version](https://badge.fury.io/js/aping-plugin-openweathermap.png)](https://badge.fury.io/js/aping-plugin-openweathermap)
+[![Bower version](https://badge.fury.io/bo/apiNG-plugin-openweathermap.png)](https://badge.fury.io/bo/apiNG-plugin-openweathermap)
+
 **_apiNG-plugin-openweathermap_** is a [OpenWeatherMap API](http://openweathermap.org/api) plugin for [**apiNG**](https://github.com/JohnnyTheTank/apiNG).
 
 # Information
 * **Supported apiNG models: `weather`**
-* This plugin supports the [`get-native-data` parameter](https://aping.readme.io/docs/configuration#parameters)
+* This plugin supports the [`get-native-data` parameter](https://aping.readme.io/docs/advanced#parameters)
 * This plugin needs an [api key](#2-api-key) :warning:
 * Used promise library: [angular-openweathermap-api-factory](https://github.com/JohnnyTheTank/angular-openweathermap-api-factory) _(included in distribution files)_
 
@@ -14,7 +17,7 @@
 1. [INSTALLATION](#1-installation)
     1. Get file
     2. Include file
-    3. Add dependencies
+    3. Add dependency
     4. Add plugin
 2. [API KEY](#2-api-key)
     1. Generate your `api_key`
@@ -47,7 +50,7 @@ Include `aping-plugin-openweathermap.min.js` in your apiNG application
 <script src="aping-plugin-openweathermap.min.js"></script>
 ```
 
-### III. Add dependencies
+### III. Add dependency
 Add the module `jtt_aping_openweathermap` as a dependency to your app module:
 ```js
 var app = angular.module('app', ['jtt_aping', 'jtt_aping_openweathermap']);
