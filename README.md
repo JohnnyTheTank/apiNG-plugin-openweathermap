@@ -30,10 +30,11 @@
 ## 1. INSTALLATION
 
 ### I. Get file
-Install via either [bower](http://bower.io/), [npm](https://www.npmjs.com/) or downloaded files:
+Install via either [bower](http://bower.io/), [npm](https://www.npmjs.com/), CDN (jsDelivr) or downloaded files:
 
 * `bower install apiNG-plugin-openweathermap --save`
 * `npm install aping-plugin-openweathermap --save`
+* use [CDN file](https://www.jsdelivr.com/projects/aping.plugin-openweathermap)
 * download [apiNG-plugin-openweathermap.zip](https://github.com/JohnnyTheTank/apiNG-plugin-openweathermap/zipball/master)
 
 ### II. Include file
@@ -45,6 +46,9 @@ Include `aping-plugin-openweathermap.min.js` in your apiNG application
 
 <!-- when using npm -->
 <script src="node_modules/aping-plugin-openweathermap/dist/aping-plugin-openweathermap.min.js"></script>
+
+<!-- when using cdn file -->
+<script src="//cdn.jsdelivr.net/aping.plugin-openweathermap/latest/aping-plugin-openweathermap.min.js"></script>
 
 <!-- when using downloaded files -->
 <script src="aping-plugin-openweathermap.min.js"></script>
