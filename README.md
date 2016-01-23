@@ -84,7 +84,6 @@ Create and open `js/apiNG/aping-config.js` in your application folder. It should
 apingApp.config(['$provide', function ($provide) {
     $provide.value("apingDefaultSettings", {
         apingApiKeys : {
-            //...
             'openweathermap': [
                 {'api_key':'<YOUR_OPENWEATHERMAP_API_KEY>'}
             ],
