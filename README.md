@@ -57,7 +57,7 @@ Include `aping-plugin-openweathermap.min.js` in your apiNG application
 ### III. Add dependency
 Add the module `jtt_aping_openweathermap` as a dependency to your app module:
 ```js
-var app = angular.module('app', ['jtt_aping', 'jtt_aping_openweathermap']);
+angular.module('app', ['jtt_aping', 'jtt_aping_openweathermap']);
 ```
 
 ### IV. Add the plugin
@@ -81,7 +81,7 @@ Add the plugin's directive `aping-openweathermap="[]"` to your apiNG directive a
 ### II. Insert your `api_key` into `aping-config.js`
 Create and open `js/apiNG/aping-config.js` in your application folder. It should be look like this snippet:
 ```js
-apingApp.config(['$provide', function ($provide) {
+angular.module('jtt_aping').config(['$provide', function ($provide) {
     $provide.value("apingDefaultSettings", {
         apingApiKeys : {
             'openweathermap': [

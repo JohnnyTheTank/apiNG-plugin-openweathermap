@@ -1,6 +1,6 @@
 "use strict";
 
-var jjtApingOpenWeatherMap = angular.module("jtt_aping_openweathermap", ['jtt_openweathermap'])
+angular.module("jtt_aping_openweathermap", ['jtt_openweathermap'])
     .directive('apingOpenweathermap', ['apingOpenWeatherMapHelper', 'apingUtilityHelper', 'openweathermapFactory', function (apingOpenWeatherMapHelper, apingUtilityHelper, openweathermapFactory) {
         return {
             require: '?aping',
