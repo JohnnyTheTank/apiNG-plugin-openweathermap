@@ -1,6 +1,6 @@
 /**
     @name: aping-plugin-openweathermap 
-    @version: 0.7.6 (24-01-2016) 
+    @version: 0.7.7 (28-01-2016) 
     @author: Jonathan Hornung <jonathan.hornung@gmail.com> 
     @url: https://github.com/JohnnyTheTank/apiNG-plugin-openweathermap 
     @license: MIT
@@ -186,7 +186,7 @@ angular.module("jtt_aping_openweathermap")
             var weatherObject = apingModels.getNew("weather", this.getThisPlatformString());
 
             //fill _item in socialObject
-            $.extend(true, weatherObject, {
+            angular.extend(weatherObject, {
                 //weather_code: undefined,
                 //weather_caption: undefined, //rain
                 //weather_text : undefined, //light rain
@@ -219,7 +219,7 @@ angular.module("jtt_aping_openweathermap")
                 loc_country: _item.sys ? _item.sys.country : undefined,
                 loc_lat: _item.coord ? _item.coord.lat : undefined,
                 loc_lng: _item.coord ? _item.coord.lon : undefined,
-                //loc_zip : false,
+                //loc_zip : undefined,
             });
 
             if (_item.rain) {

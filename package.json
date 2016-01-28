@@ -1,6 +1,6 @@
 {
   "name": "aping-plugin-openweathermap",
-  "version": "0.7.6",
+  "version": "0.7.7",
   "description": "OpenWeatherMap plugin for apiNG",
   "main": "dist/aping-plugin-openweathermap.min.js",
   "scripts": {
