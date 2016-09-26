@@ -12,16 +12,16 @@
 </head>
 <body ng-app="app">
 
-    <!-- Cologne -->
+    <h2>Cologne</h2>
     <aping
             template-url="template.html"
             model="weather"
-            aping-openweathermap="[{'cityName':'berlin', 'countryCode':'de', 'language':'de'}]">
+            aping-openweathermap="[{'cityName':'cologne', 'countryCode':'de', 'language':'de'}]">
     </aping>
 
     <hr>
 
-    <!-- NYC -->
+    <h2>NYC</h2>
     <aping
             template-url="template.html"
             model="weather"
@@ -30,16 +30,16 @@
 
     <hr>
 
-    <!-- Berlin -->
+    <h2>Berlin, 5 Days forecast</h2>
     <aping
             template-url="template.html"
             model="weather"
-            aping-openweathermap="[{'lat':'52.52', 'lng':'13.41', 'language':'de'}]">
+            aping-openweathermap="[{'lat':'52.52', 'lng':'13.41', 'language':'de', 'timeSlot':'forecast5'}]">
     </aping>
 
     <hr>
 
-    <!-- Perlach in Munich -->
+    <h2>Perlach in Munich</h2>
     <aping
             template-url="template.html"
             model="weather"

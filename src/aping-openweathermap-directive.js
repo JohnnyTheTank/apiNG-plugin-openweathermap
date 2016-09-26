@@ -29,8 +29,8 @@ angular.module("jtt_aping_openweathermap", ['jtt_openweathermap'])
                         lang: request.language || false,
                         units: request.units || "metric",
                     };
-
-                    if (request.units == 'kelvin') {
+                    
+                    if (request.units === 'kelvin') {
                         requestObject.units = undefined;
                     }
 
@@ -42,24 +42,47 @@ angular.module("jtt_aping_openweathermap", ['jtt_openweathermap'])
                         if (request.type) {
                             requestObject.type = request.type;
                         }
-
-                        openweathermapFactory.getWeatherFromCitySearchByName(requestObject)
-                            .then(function (_data) {
-                                apingController.concatToResults(apingOpenWeatherMapHelper.getObjectByJsonData(_data, helperObject));
-                            });
+                        
+                        if(request.timeSlot === "forecast5") {
+                            openweathermapFactory.getForecast5FromCitySearchByName(requestObject)
+                                .then(function (_data) {
+                                    apingController.concatToResults(apingOpenWeatherMapHelper.getObjectByJsonData(_data, helperObject));
+                                });
+                        } else {
+                            openweathermapFactory.getWeatherFromCitySearchByName(requestObject)
+                                .then(function (_data) {
+                                    apingController.concatToResults(apingOpenWeatherMapHelper.getObjectByJsonData(_data, helperObject));
+                                });
+                        }
                     } else if (request.cityId) {
                         requestObject.id = request.cityId;
-                        openweathermapFactory.getWeatherFromCityById(requestObject)
-                            .then(function (_data) {
-                                apingController.concatToResults(apingOpenWeatherMapHelper.getObjectByJsonData(_data, helperObject));
-                            });
+    
+                        if(request.timeSlot === "forecast5") {
+                            openweathermapFactory.getForecast5FromCityById(requestObject)
+                                .then(function (_data) {
+                                    apingController.concatToResults(apingOpenWeatherMapHelper.getObjectByJsonData(_data, helperObject));
+                                });
+                        } else {
+                            openweathermapFactory.getWeatherFromCityById(requestObject)
+                                .then(function (_data) {
+                                    apingController.concatToResults(apingOpenWeatherMapHelper.getObjectByJsonData(_data, helperObject));
+                                });
+                        }
                     } else if (request.lat && request.lng) {
                         requestObject.lat = request.lat;
                         requestObject.lon = request.lng;
-                        openweathermapFactory.getWeatherFromLocationByCoordinates(requestObject)
-                            .then(function (_data) {
-                                apingController.concatToResults(apingOpenWeatherMapHelper.getObjectByJsonData(_data, helperObject));
-                            });
+    
+                        if(request.timeSlot === "forecast5") {
+                            openweathermapFactory.getForecast5FromLocationByCoordinates(requestObject)
+                                .then(function (_data) {
+                                    apingController.concatToResults(apingOpenWeatherMapHelper.getObjectByJsonData(_data, helperObject));
+                                });
+                        } else {
+                            openweathermapFactory.getWeatherFromLocationByCoordinates(requestObject)
+                                .then(function (_data) {
+                                    apingController.concatToResults(apingOpenWeatherMapHelper.getObjectByJsonData(_data, helperObject));
+                                });
+                        }
                     } else if (request.zip) {
                         requestObject.zip = request.zip;
                         if (request.countryCode) {

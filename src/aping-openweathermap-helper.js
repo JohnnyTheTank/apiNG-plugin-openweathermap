@@ -11,6 +11,7 @@ angular.module("jtt_aping_openweathermap")
         };
 
         this.getObjectByJsonData = function (_data, _helperObject) {
+            
             var requestResults = [];
 
             if (_data && _data.data) {
@@ -32,15 +33,29 @@ angular.module("jtt_aping_openweathermap")
                         });
                     }
                 } else {
-
-                    var tempResult;
-                    if (_helperObject.getNativeData === true || _helperObject.getNativeData === "true") {
-                        tempResult = _data.data;
+                    
+                    if (typeof _data.data.list !== "undefined"  && _data.data.list.constructor === Array) {
+                        angular.forEach(_data.data.list, function (value, key) {
+                            var tempResult;
+                            if (_helperObject.getNativeData === true || _helperObject.getNativeData === "true") {
+                                tempResult = value;
+                            } else {
+                                tempResult = _this.getItemByJsonData(value, _helperObject.model);
+                            }
+                            if (tempResult) {
+                                requestResults.push(tempResult);
+                            }
+                        });
                     } else {
-                        tempResult = _this.getItemByJsonData(_data.data, _helperObject.model);
-                    }
-                    if (tempResult) {
-                        requestResults.push(tempResult);
+                        var tempResult;
+                        if (_helperObject.getNativeData === true || _helperObject.getNativeData === "true") {
+                            tempResult = _data.data;
+                        } else {
+                            tempResult = _this.getItemByJsonData(_data.data, _helperObject.model);
+                        }
+                        if (tempResult) {
+                            requestResults.push(tempResult);
+                        }
                     }
                 }
             }
@@ -124,9 +139,6 @@ angular.module("jtt_aping_openweathermap")
                 //rain_volume: undefined,
                 clouds: _item.clouds ? _item.clouds.all : undefined,
 
-                timestamp: Date.now(),
-                date_time: new Date(),
-
                 sunrise_timestamp: _item.sys ? _item.sys.sunrise : undefined,
                 sunrise_date_time: _item.sys ? new Date(_item.sys.sunrise) : undefined,
                 sunset_timestamp: _item.sys ? _item.sys.sunset : undefined,
@@ -139,6 +151,14 @@ angular.module("jtt_aping_openweathermap")
                 loc_lng: _item.coord ? _item.coord.lon : undefined,
                 //loc_zip : undefined,
             });
+            
+            if(_item.dt) {
+                weatherObject.timestamp =_item.dt * 1000;
+                weatherObject.date_time = new Date(weatherObject.timestamp);
+            } else {
+                weatherObject.timestamp = Date.now();
+                weatherObject.date_time = new Date();
+            }
 
             if (_item.rain) {
                 var tempRainObject = this.getRainInfoFromObject(_item.rain);

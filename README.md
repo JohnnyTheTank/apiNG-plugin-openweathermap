@@ -115,18 +115,20 @@ Every **apiNG plugin** expects an array of **requests** as html attribute.
 |----------|---------|---------|---------|---------|
 | **`cityName`** | `berlin` |  | You can call by city name | no |
 | **`countryCode`** | `de` |  | ISO 3166 country codes | yes |
+| **`timeSlot`** | `forecast5` | `now` | Valid values: `now` and `forecast5` (5 days forecast) |
 | **`type`** | `like` |  | To set the accuracy level either use the `accurate` or `like` type parameter. `accurate` returns exact match values. `like` returns results by searching for that substring | yes |
 | **`units`** | `imperial` | `metric` | Temperature is available in Fahrenheit, Celsius and Kelvin units. For temperature in Fahrenheit use `imperial`. For temperature in Celsius use `metric`. For temperature in Kelvin use `kelvin` | yes |
 | **`language`** | `ru` | `en`  | English: `en`, Russian: `ru`, Italian: `it`, Spanish: `es` (or `sp`), Ukrainian: `uk` (or `ua`), German: `de`, Portuguese: `pt`, Romanian: `ro`, Polish: `pl`, Finnish: `fi`, Dutch: `nl`, French: `fr`, Bulgarian: `bg`, Swedish: `sv` (or `se`), Chinese Traditional: `zh_tw`, Chinese Simplified: `zh` (or `zh_cn`), Turkish: `tr`, Croatian: `hr`, Catalan: `ca`  | yes |
 
 Sample requests:
 * `[{'cityName':'london'}, {'cityName':'ney work city', 'units':'imperial'}]`
-* `[{'cityName':'berlin', 'countryCode':'de', 'language':'de'}]`
+* `[{'cityName':'berlin', 'countryCode':'de', 'language':'de', 'timeSlot':'forecast5'}]`
 
 #### Requests by City ID
 |  parameter  | sample | default | description | optional |
 |----------|---------|---------|---------|---------|
 | **`cityId`** | `2172797` |  | You can call by city ID. API responds with exact result. List of city ID city.list.json.gz can be downloaded [here](http://bulk.openweathermap.org/sample/). | no |
+| **`timeSlot`** | `forecast5` | `now` | Valid values: `now` and `forecast5` (5 days forecast) |
 | **`units`** | `imperial` | `metric` | Temperature is available in Fahrenheit, Celsius and Kelvin units. For temperature in Fahrenheit use `imperial`. For temperature in Celsius use `metric`. For temperature in Kelvin use `kelvin` | yes |
 | **`language`** | `ru` | `en`  | English: `en`, Russian: `ru`, Italian: `it`, Spanish: `es` (or `sp`), Ukrainian: `uk` (or `ua`), German: `de`, Portuguese: `pt`, Romanian: `ro`, Polish: `pl`, Finnish: `fi`, Dutch: `nl`, French: `fr`, Bulgarian: `bg`, Swedish: `sv` (or `se`), Chinese Traditional: `zh_tw`, Chinese Simplified: `zh` (or `zh_cn`), Turkish: `tr`, Croatian: `hr`, Catalan: `ca`  | yes |
 
@@ -149,6 +151,7 @@ Sample requests:
 |----------|---------|---------|---------|---------|
 | **`lat`** | `-13.163333` |  | latitude of the location of your interest | no |
 | **`lng`** | `-72.545556` |  | longitude of the location of your interest | no |
+| **`timeSlot`** | `forecast5` | `now` | Valid values: `now` and `forecast5` (5 days forecast) |
 | **`units`** | `imperial` | `metric` | Temperature is available in Fahrenheit, Celsius and Kelvin units. For temperature in Fahrenheit use `imperial`. For temperature in Celsius use `metric`. For temperature in Kelvin use `kelvin` | yes |
 | **`language`** | `ru` | `en`  | English: `en`, Russian: `ru`, Italian: `it`, Spanish: `es` (or `sp`), Ukrainian: `uk` (or `ua`), German: `de`, Portuguese: `pt`, Romanian: `ro`, Polish: `pl`, Finnish: `fi`, Dutch: `nl`, French: `fr`, Bulgarian: `bg`, Swedish: `sv` (or `se`), Chinese Traditional: `zh_tw`, Chinese Simplified: `zh` (or `zh_cn`), Turkish: `tr`, Croatian: `hr`, Catalan: `ca`  | yes |
 
