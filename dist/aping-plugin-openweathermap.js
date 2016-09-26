@@ -1,6 +1,6 @@
 /**
     @name: aping-plugin-openweathermap 
-    @version: 0.7.7 (28-01-2016) 
+    @version: 0.8.0 (26-09-2016) 
     @author: Jonathan Hornung <jonathan.hornung@gmail.com> 
     @url: https://github.com/JohnnyTheTank/apiNG-plugin-openweathermap 
     @license: MIT
@@ -36,8 +36,8 @@ angular.module("jtt_aping_openweathermap", ['jtt_openweathermap'])
                         lang: request.language || false,
                         units: request.units || "metric",
                     };
-
-                    if (request.units == 'kelvin') {
+                    
+                    if (request.units === 'kelvin') {
                         requestObject.units = undefined;
                     }
 
@@ -49,24 +49,47 @@ angular.module("jtt_aping_openweathermap", ['jtt_openweathermap'])
                         if (request.type) {
                             requestObject.type = request.type;
                         }
-
-                        openweathermapFactory.getWeatherFromCitySearchByName(requestObject)
-                            .then(function (_data) {
-                                apingController.concatToResults(apingOpenWeatherMapHelper.getObjectByJsonData(_data, helperObject));
-                            });
+                        
+                        if(request.timeSlot === "forecast5") {
+                            openweathermapFactory.getForecast5FromCitySearchByName(requestObject)
+                                .then(function (_data) {
+                                    apingController.concatToResults(apingOpenWeatherMapHelper.getObjectByJsonData(_data, helperObject));
+                                });
+                        } else {
+                            openweathermapFactory.getWeatherFromCitySearchByName(requestObject)
+                                .then(function (_data) {
+                                    apingController.concatToResults(apingOpenWeatherMapHelper.getObjectByJsonData(_data, helperObject));
+                                });
+                        }
                     } else if (request.cityId) {
                         requestObject.id = request.cityId;
-                        openweathermapFactory.getWeatherFromCityById(requestObject)
-                            .then(function (_data) {
-                                apingController.concatToResults(apingOpenWeatherMapHelper.getObjectByJsonData(_data, helperObject));
-                            });
+    
+                        if(request.timeSlot === "forecast5") {
+                            openweathermapFactory.getForecast5FromCityById(requestObject)
+                                .then(function (_data) {
+                                    apingController.concatToResults(apingOpenWeatherMapHelper.getObjectByJsonData(_data, helperObject));
+                                });
+                        } else {
+                            openweathermapFactory.getWeatherFromCityById(requestObject)
+                                .then(function (_data) {
+                                    apingController.concatToResults(apingOpenWeatherMapHelper.getObjectByJsonData(_data, helperObject));
+                                });
+                        }
                     } else if (request.lat && request.lng) {
                         requestObject.lat = request.lat;
                         requestObject.lon = request.lng;
-                        openweathermapFactory.getWeatherFromLocationByCoordinates(requestObject)
-                            .then(function (_data) {
-                                apingController.concatToResults(apingOpenWeatherMapHelper.getObjectByJsonData(_data, helperObject));
-                            });
+    
+                        if(request.timeSlot === "forecast5") {
+                            openweathermapFactory.getForecast5FromLocationByCoordinates(requestObject)
+                                .then(function (_data) {
+                                    apingController.concatToResults(apingOpenWeatherMapHelper.getObjectByJsonData(_data, helperObject));
+                                });
+                        } else {
+                            openweathermapFactory.getWeatherFromLocationByCoordinates(requestObject)
+                                .then(function (_data) {
+                                    apingController.concatToResults(apingOpenWeatherMapHelper.getObjectByJsonData(_data, helperObject));
+                                });
+                        }
                     } else if (request.zip) {
                         requestObject.zip = request.zip;
                         if (request.countryCode) {
@@ -93,6 +116,7 @@ angular.module("jtt_aping_openweathermap")
         };
 
         this.getObjectByJsonData = function (_data, _helperObject) {
+            
             var requestResults = [];
 
             if (_data && _data.data) {
@@ -114,15 +138,29 @@ angular.module("jtt_aping_openweathermap")
                         });
                     }
                 } else {
-
-                    var tempResult;
-                    if (_helperObject.getNativeData === true || _helperObject.getNativeData === "true") {
-                        tempResult = _data.data;
+                    
+                    if (typeof _data.data.list !== "undefined"  && _data.data.list.constructor === Array) {
+                        angular.forEach(_data.data.list, function (value, key) {
+                            var tempResult;
+                            if (_helperObject.getNativeData === true || _helperObject.getNativeData === "true") {
+                                tempResult = value;
+                            } else {
+                                tempResult = _this.getItemByJsonData(value, _helperObject.model);
+                            }
+                            if (tempResult) {
+                                requestResults.push(tempResult);
+                            }
+                        });
                     } else {
-                        tempResult = _this.getItemByJsonData(_data.data, _helperObject.model);
-                    }
-                    if (tempResult) {
-                        requestResults.push(tempResult);
+                        var tempResult;
+                        if (_helperObject.getNativeData === true || _helperObject.getNativeData === "true") {
+                            tempResult = _data.data;
+                        } else {
+                            tempResult = _this.getItemByJsonData(_data.data, _helperObject.model);
+                        }
+                        if (tempResult) {
+                            requestResults.push(tempResult);
+                        }
                     }
                 }
             }
@@ -206,9 +244,6 @@ angular.module("jtt_aping_openweathermap")
                 //rain_volume: undefined,
                 clouds: _item.clouds ? _item.clouds.all : undefined,
 
-                timestamp: Date.now(),
-                date_time: new Date(),
-
                 sunrise_timestamp: _item.sys ? _item.sys.sunrise : undefined,
                 sunrise_date_time: _item.sys ? new Date(_item.sys.sunrise) : undefined,
                 sunset_timestamp: _item.sys ? _item.sys.sunset : undefined,
@@ -221,6 +256,14 @@ angular.module("jtt_aping_openweathermap")
                 loc_lng: _item.coord ? _item.coord.lon : undefined,
                 //loc_zip : undefined,
             });
+            
+            if(_item.dt) {
+                weatherObject.timestamp =_item.dt * 1000;
+                weatherObject.date_time = new Date(weatherObject.timestamp);
+            } else {
+                weatherObject.timestamp = Date.now();
+                weatherObject.date_time = new Date();
+            }
 
             if (_item.rain) {
                 var tempRainObject = this.getRainInfoFromObject(_item.rain);
@@ -291,6 +334,33 @@ angular.module("jtt_openweathermap", [])
             });
         };
 
+        openweathermapFactory.getForecast5FromCitySearchByName = function (_params) {
+            var searchData = openweathermapSearchDataService.getNew("cityForecast5SearchByName", _params);
+            return $http({
+                method: 'GET',
+                url: searchData.url,
+                params: searchData.object,
+            });
+        };
+
+        openweathermapFactory.getForecast5FromCityById = function (_params) {
+            var searchData = openweathermapSearchDataService.getNew("cityForecast5ById", _params);
+            return $http({
+                method: 'GET',
+                url: searchData.url,
+                params: searchData.object,
+            });
+        };
+
+        openweathermapFactory.getForecast5FromLocationByCoordinates = function (_params) {
+            var searchData = openweathermapSearchDataService.getNew("locationForecast5ByCoordinates", _params);
+            return $http({
+                method: 'GET',
+                url: searchData.url,
+                params: searchData.object,
+            });
+        };
+
         return openweathermapFactory;
     }])
     .service('openweathermapSearchDataService', function () {
@@ -300,7 +370,7 @@ angular.module("jtt_openweathermap", [])
 
         this.fillDataInObjectByList = function (_object, _params, _list) {
             angular.forEach(_list, function (value, key) {
-                if (typeof _params[value] !== "undefined") {
+                if (angular.isDefined(_params[value])) {
                     _object.object[value] = _params[value];
                 }
             });
@@ -351,6 +421,28 @@ angular.module("jtt_openweathermap", [])
                     ]);
                     openweathermapSearchData.url = this.getApiBaseUrl() + "weather";
                     break;
+
+                case "cityForecast5SearchByName":
+                    openweathermapSearchData = this.fillDataInObjectByList(openweathermapSearchData, _params, [
+                        'q', 'lang', 'type', "units",
+                    ]);
+                    openweathermapSearchData.url = this.getApiBaseUrl() + "forecast";
+                    break;
+
+                case "cityForecast5ById":
+                    openweathermapSearchData = this.fillDataInObjectByList(openweathermapSearchData, _params, [
+                        'id', 'lang', "units",
+                    ]);
+                    openweathermapSearchData.url = this.getApiBaseUrl() + "forecast";
+                    break;
+
+                case "locationForecast5ByCoordinates":
+                    openweathermapSearchData = this.fillDataInObjectByList(openweathermapSearchData, _params, [
+                        'lat', 'lon', 'lang', "units",
+                    ]);
+                    openweathermapSearchData.url = this.getApiBaseUrl() + "forecast";
+                    break;
+
             }
             return openweathermapSearchData;
         };
